@@ -1,0 +1,75 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8082/eureka/
+    registerWithEureka: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+spring:
+  application:
+    name: ${appname}
+  jpa:
+    show_sql: true
+    format_sql: true
+    properties:
+      hibernate.dialect: ${hibernate-dialect}
+      #hibernate.hbm2ddl.auto: update
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate.show-sql: true
+  datasource:
+    driver-class-name: ${driver}
+    password: ${pass}
+    url: ${jdbcUrl}
+    username: ${uname}
+    hikari:
+      connection-timeout: 10000
+      idle-timeout: 60000
+      max-lifetime: 300000
+      minimum-idle: 5
+      maximum-pool-size: 5
+      data-source-properties:
+        cachePrepStmts: false
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+
+
+
+#jackson:
+#  deserialization:
+#    ACCEPT_EMPTY_STRING_AS_NULL_OBJECT: true
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+
+
+hystrix:
+   command:
+      default:
+         execution:
+            timeout:
+               enabled: false
+            isolation:
+               thread:
+                 timeoutInMilliseconds: 60000
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 60000
+
+
+ribbon:
+  ConnectTimeout:  60000
+  ReadTimeout:  60000
+
+
+
+ssl: false
