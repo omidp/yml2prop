@@ -12,8 +12,10 @@ mvn clean install -DskipTests=true
 
 ```
 Converter ymlToPropertiesConverter = new YmlToPropertiesConverter();
-		ymlToPropertiesConverter.convert(ConverterTest.class.getResourceAsStream("/application.yml"), System.out);
+		ymlToPropertiesConverter.convert(
+		ConverterTest.class.getResourceAsStream("/application.yml"), System.out);
     
     Converter ymlToPropertiesConverter = new PropertiesToYmlConverter();
-		ymlToPropertiesConverter.convert(ConverterTest.class.getResourceAsStream("/application.properties"), System.out);
+		ymlToPropertiesConverter.convert(
+		ConverterTest.class.getResourceAsStream("/application.properties"), System.out);
 ```
